@@ -1,0 +1,6 @@
+.env
+__pycache__
+SentenceTransformer
+*.txt
+attack_logs
+training_data

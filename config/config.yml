@@ -1,0 +1,84 @@
+
+jailbreak_setting:
+  mode: 'Attack' 
+  # You can switch to "Distillation", no LLM judge is enabled, and the attack ends when the attack rounds reach the max_rounds_per_attack
+  # NOTE: Distillation mode cannot be used with early stopping enabled
+  max_retries: 3
+  max_trials_per_retry: 2
+  max_rounds_per_attack: 4
+  example_injection_threshold: 2 # The number of trials of successful jailbreak examples injected into the attacker prompt.
+  optimization_variants: 8 # The number of variants generated in each optimization round. You can adjust it based on your API limits and desired attack diversity.
+  diverse_attack_ratio : 0.5 # 50% variants are generated with the diversity role-playing and 50% variants are generated without it.
+  early_stop: False # You can set it to True to stop the attack early if a successful jailbreak is found, which can save time and API costs.
+  record_trajectories: False # Set it to True if you want to record the attack trajectories, which can be useful for collecting unsuccessful jailbreaks attack patterns for fine-tuning.
+  num_workers: 5 # Change it based on your number of CPU cores or API limits.
+  enable_safeguard: False
+
+paths:
+  dataset: "hf://datasets/JailbreakBench/JBB-Behaviors/data/harmful-behaviors.csv"
+  logs_dir: "logs"
+  result_dir: "results"
+  out_dir: "attack_logs"
+  successful_example_cache: "successful_example_cache"
+
+context: 
+  paper_name: 'X_Teaming' # see context/summary.json, if you want to change the paper, please also change the context/summary.json accordingly, or if you want to use your own paper, see usage of paper_content_extractor.py
+  context_json_path: 'context/summary.json'
+
+safeguard: # Optional if enable_safeguard is False                      
+  model: "deepseek-chat"    
+  base_url: "{{SAFEGUARD_BASE_URL}}"   
+  api_key: "{{SAFEGUARD_API_KEY}}"                              
+  generate_kwargs:
+    temperature: 0.0
+
+target_model:                                  
+  model: "deepseek-chat"    
+  base_url: "{{TARGET_BASE_URL}}"   
+  api_key: "{{TARGET_API_KEY}}"                              
+  generate_kwargs:
+    temperature: 0.0
+
+
+refusal_checker:
+  model: "deepseek-chat"       
+  base_url: "{{REFUSAL_CHECKER_BASE_URL}}" 
+  api_key: "{{REFUSAL_CHECKER_API_KEY}}"    
+  generate_kwargs:
+    temperature: 0.0
+
+summary_model: # helper model to summarize papers, not involved in the attack process
+  model: "deepseek-chat"
+  base_url: "{{SUMMARY_BASE_URL}}"
+  api_key: "{{SUMMARY_API_KEY}}"
+  generate_kwargs:
+    temperature: 0.1
+
+attacker:           
+  model: "deepseek-chat"                           
+  base_url: "{{ATTACKER_BASE_URL}}" 
+  api_key: "{{ATTACKER_API_KEY}}"          
+  generate_kwargs:
+    temperature: 0.3
+  
+
+optimizer:                          
+  model: "deepseek-chat"  
+  base_url: "{{OPTIMIZER_BASE_URL}}"
+  api_key: "{{OPTIMIZER_API_KEY}}"
+  generate_kwargs:
+    temperature: 0.3
+
+judge:                          
+  model: "deepseek-v3.2"
+  base_url: "{{JUDGE_BASE_URL}}"
+  api_key: "{{JUDGE_API_KEY}}"
+  generate_kwargs:
+    temperature: 0
+
+knowledge_extractor:
+  model: "deepseek-chat" 
+  base_url: "{{KNOWLEDGE_EXTRACTOR_BASE_URL}}"
+  api_key: "{{KNOWLEDGE_EXTRACTOR_API_KEY}}"
+  generate_kwargs:
+    temperature: 0
