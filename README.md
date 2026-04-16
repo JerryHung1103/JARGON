@@ -30,7 +30,7 @@ cd JARGON
 ### 2. Create and activate the environment:
 ```bash
 conda env create -f environment.yml
-conda activate jargon
+conda activate JARGON
 ```
 
 ### 3. Configure API keys and endpoints 
