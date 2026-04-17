@@ -242,7 +242,7 @@ python main.py
             </td>
         </tr>
         <tr>
-            <td><strong>Judge</strong> (optional, injected via <code>judge</code> parameter)</td>
+            <td><strong>Judge</strong></td>
             <td>
                 <ul>
                     <li>Performs final harmful content detection on the accumulated <code>&lt;harm&gt;</code> text.</li>
