@@ -74,7 +74,7 @@ SAFEGUARD_BASE_URL=your_base_url_here
 
 >💡Note: All BASE_URL values should point to the API endpoint of your chosen LLM provider (e.g., OpenAI‑compatible endpoint). You can use the same API key for multiple roles if your provider allows.
 
-### 4. Configure `config/config.yaml`
+### 4. Configure `config/config.yml`
 The main settings are controlled through `config.yml`. Below are some example and explanations:
 
 ```yaml
