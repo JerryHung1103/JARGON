@@ -1,33 +1,19 @@
 # Into the Gray Zone: Domain Contexts Can Blur LLM Safety Boundaries
 
 <p align="center">
-  <a href="#setup">Setup</a> ·
-  <a href="#usage">Usage</a> ·
-  <a href="#attack-results">View Results</a> ·
+  <a href="#setup">Setup</a> •
+  <a href="#usage">Usage</a> •
+  <a href="#attack-results">View Results</a> •
   <a href="#processing-trajectories-for-training">Data Pipeline</a>
-</p>
-
-<p align="center">
-  <b>Research code</b> for multi-round, domain-context jailbreak evaluation of LLMs<br/>
-  Python · LLM agents · safety benchmarks · data pipeline for training trajectories
 </p>
 
 ---
 
 ## Overview
 
-This repository contains the implementation of **JARGON**, a jailbreak attack that leverages domain-specific contexts to bypass LLM safety mechanisms. By embedding harmful requests within legitimate academic / technical domains, JARGON exposes significant vulnerabilities in current alignment techniques. The framework supports multi-round conversational attacks, prompt optimization, belief state tracking, and automatic extraction of harmful knowledge.
-
+This repository contains the implementation of **JARGON**, a jailbreak attack that leverages domain‑specific contexts to bypass LLM safety mechanisms. By embedding harmful requests within legitimate academic, technical domains, JARGON exposes significant vulnerabilities in current alignment techniques. The framework supports multi‑round conversational attacks, prompt optimization, belief state tracking, and automatic extraction of harmful knowledge.
+ 
 > **Authors**: Ki Sen Hung, Xi Yang, Chang Liu, Haoran Li, Kejiang Chen, Changxuan Fan, Tsun On Kwok, Weiming Zhang, Xiaomeng Li, Yangqiu Song
-
-### Why this repo matters for recruiters
-
-| Skill | Where it shows up |
-|-------|-------------------|
-| LLM systems / agents | Attack engine, evaluator, optimizer, safeguard agents |
-| Research engineering | Reproducible configs, benchmarks, metrics |
-| Safety / red-teaming | Jailbreak evaluation under domain contexts |
-| Data pipelines | Trajectory processing for downstream training |
 
 ---
 
